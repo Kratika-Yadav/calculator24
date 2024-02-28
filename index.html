@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        body{
+            background:linear-gradient(135deg , lightblue , white) ;
+            width: 100vw;
+            height: 100vh;
+        }
+        h1{
+            text-align: center;
+            color: white;
+        }
+        #calc{
+            background-color: #384450;
+            width: 340px;
+            height: auto;
+            margin: 50px auto;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        input{
+            background-color: transparent;
+            width: 100%;
+            height: 80px;
+            border: none;
+            color: white;
+            font-size: 27px;
+            font-weight: 600;
+            text-align: right;
+            letter-spacing: 3px;
+        }
+        .buttons{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        button{
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: #384450;
+            width: 70px;
+            height: 70px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.392);
+        }
+        button:active{
+            transform: scale(0.95);
+            box-shadow: -2px -2px 8px rgba(255, 255, 255, 0.348);
+        }
+        #equals{
+            width: 140px;
+        }
+        .op{
+            color: #3CD4B9;
+            font-size:20px;
+        }
+    
+    </style>
+</head>
+
+
+
+
+
+<body>
+    <h1>Calculator</h1>
+
+    <div id="calc">
+        <input type="text"  id="display" >
+        <div class="buttons">
+            <button onclick="allClear()">AC</button>
+            <button onclick="deleteLast()">DE</button>
+            <button class="op" onclick="addVal()">.</button>
+            <button class="op" onclick="addOperator()">/</button>
+
+            <button onclick="addVal()">7</button>
+            <button onclick="addVal()">8</button>
+            <button onclick="addVal()">9</button>
+            <button class="op" onclick="addOperator()">*</button>
+
+            <button onclick="addVal()">4</button>
+            <button onclick="addVal()">5</button>
+            <button onclick="addVal()">6</button>
+            <button class="op" onclick="addOperator()">-</button>
+
+            <button onclick="addVal()">1</button>
+            <button onclick="addVal()">2</button>
+            <button onclick="addVal()">3</button>
+            <button class="op" onclick="addOperator()">+</button>
+
+            <button onclick="addVal()">00</button>
+            <button onclick="addVal()">0</button>
+            <button id="equals"  class="op" onclick="computeValue()">=</button>
+
+
+            
+        </div>
+    </div>
+
+    <script>
+        let str = ""
+        let inp = document.getElementById("display");
+
+        function addVal()
+        {
+            let cb = event.target;
+            str = str + cb.innerText;
+            inp.value = inp.value + cb.innerText;
+            console.log(str);
+        }
+        function addOperator()
+        {
+            let cb = event.target;
+            str = str + cb.innerText;
+            inp.value = ""
+            console.log(str);
+        }
+
+        function computeValue()
+        {
+            inp.value =  eval(str);
+            str=eval(str);
+        }
+
+        function computeValue(){
+
+            inp.value =eval(str);
+            str=eval(str);
+        }
+        function deleteLast(){
+            inp.value =inp.value.substring(0,inp.value.length-1)
+            str=str.substring(0,str.length-1);
+
+        }
+
+        function allClear(){
+            inp.value= "";
+            str="";
+        }
+    </script>
+
+
+</body>
+</html>
